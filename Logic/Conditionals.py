@@ -1,15 +1,22 @@
 # Conditionals.py
 
-def check_winner(grid_obj, player):
-    # Check rows
-    for row in grid_obj.get_rows():
-        if all(cell == player for cell in row):
-            return True
-
-    # Check columns
-    for col in grid_obj.get_columns():
-        if all(cell == player for cell in col):
-            return True
+# def check_winner(grid_obj, player):
+#     # Check rows
+#     for row in grid_obj.get_rows():
+#         if all(cell == player for cell in row):
+#             return True
+#
+#     # Check columns
+#     for col in grid_obj.get_columns():
+#         if all(cell == player for cell in col):
+#             return True
+#
+#     # Check diagonals
+#     for diag in grid_obj.get_diagonals():
+#         if all(cell == player for cell in diag):
+#             return True
+#
+#     return False
 
 # def check_tie(grid_obj):
 #     return all(cell != ' ' for row in grid_obj.get_rows() for cell in row)
