@@ -154,11 +154,16 @@ class GameScreen(Screen):
     def __init__(self, menu_manager, **kwargs):
         super().__init__(**kwargs)
         self.menu_manager = menu_manager
+
+        # Declare attributes with placeholders
         self.layout = None
         self.grid = None
-        self.buttons = []
+        self.buttons: list[list[Button]] = []
         self.turn_label = None
-        self.current_turn = 'X'
+        self.current_turn: str = 'X'
+        self.board_size: int | None = None
+        self.cpu_enabled: bool | None = None
+        self.board_state: list[list[str]] | None = None
 
         # Rebuild UI on entering screen to reflect tile size changes dynamically
         self.bind(on_enter=lambda *_: self.init_game())
@@ -244,18 +249,19 @@ class GameScreen(Screen):
 
 
 class TicTacToeApp(App):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.sm = None # ScreenManager instance placeholder
+        self.menu_manager= MenuManager()
+
     def build(self):
-        self.menu_manager = MenuManager()
-
-        sm = ScreenManager()
-        sm.add_widget(MainMenu(name='main', menu_manager=self.menu_manager))
-        sm.add_widget(OptionsScreen(name='options', menu_manager=self.menu_manager))
-        sm.add_widget(TileSizeScreen(name='tile_size', menu_manager=self.menu_manager))
-        sm.add_widget(HistoryScreen(name='history', menu_manager=self.menu_manager))
-        sm.add_widget(GameScreen(name='game', menu_manager=self.menu_manager))
-
-        return sm
-
+        self.sm = ScreenManager()
+        self.sm.add_widget(MainMenu(name='main', menu_manager=self.menu_manager))
+        self.sm.add_widget(OptionsScreen(name='options', menu_manager=self.menu_manager))
+        self.sm.add_widget(TileSizeScreen(name='tile_size', menu_manager=self.menu_manager))
+        self.sm.add_widget(HistoryScreen(name='history', menu_manager=self.menu_manager))
+        self.sm.add_widget(GameScreen(name='game', menu_manager=self.menu_manager))
+        return self.sm
 
 if __name__ == '__main__':
     TicTacToeApp().run()
