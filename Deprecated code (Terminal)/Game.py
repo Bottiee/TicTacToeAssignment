@@ -1,10 +1,10 @@
-# from Inputs_and_prompts.Prompt_dictionary import Prompts
+# from Menu.Prompt_dictionary import Prompts
 # from Logic.Grid_logic import Grid
-# from Inputs_and_prompts.User_input_checks import parse_input
+# from Menu.User_input_checks import parse_input
 # from Logic.Conditionals import check_winner, check_tie, handle_game_end
 # from Logic.Size_logic import SizeLogic
 # from Logic.Computer_logic import ComputerPlayer
-# from Inputs_and_prompts.Menu_general import MenuManager
+# from Menu.Menu_general import MenuManager
 #
 # prompts = Prompts()
 # game_results = []
