@@ -18,20 +18,16 @@ def check_winner(grid_obj, player):
 
     return False
 
-def check_tie(grid_obj):
-    return all(cell != ' ' for row in grid_obj.get_rows() for cell in row)
-
-
-def handle_game_end(winner, game_results):
-    if winner:
-        print(f"Player {winner} wins!")
-    else:
-        print("It's a tie!")
-
-    # Append results to game history (not yet implemented)
-    game_results.append(winner or "Tie")
-
-    input("Press Enter to return to the main menu...")
+# def handle_game_end(winner, game_results):
+#     if winner:
+#         print(f"Player {winner} wins!")
+#     else:
+#         print("It's a tie!")
+#
+#     # Append results to game history (not yet implemented)
+#     game_results.append(winner or "Tie")
+#
+#     input("Press Enter to return to the main menu...")
 
 
 def check_win_condition(board, symbol):
