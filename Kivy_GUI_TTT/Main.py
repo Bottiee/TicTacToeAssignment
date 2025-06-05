@@ -8,9 +8,9 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.gridlayout import GridLayout
 from kivy.clock import Clock
 
-from Inputs_and_prompts.Menu_general import MenuManager
-from Logic.Conditionals import check_win_condition, check_draw_condition
-from Logic.Computer_logic import get_cpu_move
+from Kivy_GUI_TTT.Menu.Menu_general import MenuManager
+from Kivy_GUI_TTT.Logic.Conditionals import check_win_condition, check_draw_condition
+from Kivy_GUI_TTT.Logic.Computer_logic import get_cpu_move
 
 Window.size = (400, 600)
 
