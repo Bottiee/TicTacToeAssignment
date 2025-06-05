@@ -7,7 +7,6 @@ from kivy.core.window import Window
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.gridlayout import GridLayout
 from kivy.clock import Clock
-
 from Kivy_GUI_TTT.Menu.Menu_general import MenuManager
 from Kivy_GUI_TTT.Logic.Conditionals import check_win_condition, check_draw_condition
 from Kivy_GUI_TTT.Logic.Computer_logic import get_cpu_move
@@ -25,13 +24,11 @@ class MainMenu(Screen):
         self.menu_manager = menu_manager
 
         layout = BoxLayout(orientation='vertical', spacing=20, padding=40)
-
         layout.add_widget(Label(text="Tic Tac Toe", font_size=32))
 
         btn_start = Button(text="Start Game", size_hint=(1, 0.2))
         btn_options = Button(text="Options", size_hint=(1, 0.2))
         btn_quit = Button(text="Quit", size_hint=(1, 0.2))
-
         btn_start.bind(on_release=self.start_game)
         btn_options.bind(on_release=self.open_options)
         btn_quit.bind(on_release=lambda *_: quit_game())
@@ -55,7 +52,6 @@ class OptionsScreen(Screen):
         self.menu_manager = menu_manager
 
         layout = BoxLayout(orientation='vertical', padding=20, spacing=20)
-
         title = Label(text="Options Menu", font_size=32, size_hint=(1, 0.2))
         layout.add_widget(title)
 
@@ -87,7 +83,6 @@ class TileSizeScreen(Screen):
         self.menu_manager = menu_manager
 
         layout = BoxLayout(orientation='vertical', padding=20, spacing=20)
-
         title = Label(text="Select Tile Size", font_size=32, size_hint=(1, 0.2))
         layout.add_widget(title)
 
@@ -117,21 +112,18 @@ class HistoryScreen(Screen):
         self.bind(on_enter=lambda *_: self.populate_history())
 
         layout = BoxLayout(orientation='vertical', padding=20, spacing=20)
-
         title = Label(text="Game History", font_size=32, size_hint=(1, 0.1))
         layout.add_widget(title)
 
         self.scroll = ScrollView(size_hint=(1, 0.7))
         self.grid = GridLayout(cols=2, size_hint_y=None, spacing=10, padding=10)
         self.grid.bind(minimum_height=self.grid.setter('height'))
-
         self.scroll.add_widget(self.grid)
-        layout.add_widget(self.scroll)
 
+        layout.add_widget(self.scroll)
         btn_clear = Button(text="Clear Game History", size_hint=(1, 0.1))
         btn_clear.bind(on_release=self.clear_history)
         layout.add_widget(btn_clear)
-
         btn_back = Button(text="Back to Options Menu", size_hint=(1, 0.15))
         btn_back.bind(on_release=self.go_back)
         layout.add_widget(btn_back)
@@ -146,7 +138,6 @@ class HistoryScreen(Screen):
             self.grid.add_widget(Label(text="No history available", font_size=20, size_hint_y=None, height=30))
             self.grid.add_widget(Label(text="", size_hint_y=None, height=30))
             return
-
         for key, value in stats.items():
             self.grid.add_widget(Label(text=f"{key}:", font_size=20, size_hint_y=None, height=30))
             self.grid.add_widget(Label(text=str(value), font_size=20, size_hint_y=None, height=30))
@@ -176,17 +167,14 @@ class GameScreen(Screen):
         # Reset state
         self.board_size = self.menu_manager.get_tile_size()
         self.cpu_enabled = self.menu_manager.is_cpu_enabled()
-
         self.current_turn = 'X'
         self.board_state = [['' for _ in range(self.board_size)] for _ in range(self.board_size)]
 
         # Clear and build UI
         self.clear_widgets()
         self.layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
-
         self.turn_label = Label(text=f"Turn: {self.current_turn}", font_size=24, size_hint=(1, 0.1))
         self.layout.add_widget(self.turn_label)
-
         self.grid = GridLayout(cols=self.board_size, rows=self.board_size, spacing=5, size_hint=(1, 0.75))
         self.buttons = []
 
@@ -198,28 +186,22 @@ class GameScreen(Screen):
                 self.grid.add_widget(btn)
                 btn_row.append(btn)
             self.buttons.append(btn_row)
-
         self.layout.add_widget(self.grid)
 
         btn_layout = BoxLayout(size_hint=(1, 0.15), spacing=10)
-
         reset_btn = Button(text='Reset Board')
         reset_btn.bind(on_release=self.reset_board)
-
         back_btn = Button(text='Back to Main Menu')
         back_btn.bind(on_release=self.go_back)
-
         btn_layout.add_widget(reset_btn)
         btn_layout.add_widget(back_btn)
 
         self.layout.add_widget(btn_layout)
-
         self.add_widget(self.layout)
 
     def tile_clicked(self, row, col):
         if self.board_state[row][col] != '':
             return
-
         self.board_state[row][col] = self.current_turn
         self.buttons[row][col].text = self.current_turn
 
@@ -236,7 +218,6 @@ class GameScreen(Screen):
             return
 
         self.switch_turn()
-
         if self.current_turn == 'O' and self.cpu_enabled:
             Clock.schedule_once(lambda dt: self.cpu_move(), 0.5)
 
@@ -267,7 +248,6 @@ class TicTacToeApp(App):
         self.menu_manager = MenuManager()
 
         sm = ScreenManager()
-
         sm.add_widget(MainMenu(name='main', menu_manager=self.menu_manager))
         sm.add_widget(OptionsScreen(name='options', menu_manager=self.menu_manager))
         sm.add_widget(TileSizeScreen(name='tile_size', menu_manager=self.menu_manager))
