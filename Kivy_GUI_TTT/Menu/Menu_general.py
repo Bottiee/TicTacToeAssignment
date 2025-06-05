@@ -1,5 +1,5 @@
 # Menu_general.py
-from Game_history.History_storage import HistoryStorage
+from Kivy_GUI_TTT.Game_history.History_storage import HistoryStorage
 
 class MenuManager:
     def __init__(self):
