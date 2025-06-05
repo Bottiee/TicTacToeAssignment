@@ -21,8 +21,8 @@ class ComputerPlayer:
             line = [(grid[row][col_idx], (row, col_idx)) for row in range(size)]
             lines.append(line)
 
-        main_diag = [(grid[i][i], (i, i)) for i in range(size)]
-        anti_diag = [(grid[i][size - 1 - i], (i, size - 1 - i)) for i in range(size)]
+        main_diag = [(grid[index][index], (index, index)) for index in range(size)]
+        anti_diag = [(grid[index][size - 1 - index], (index, size - 1 - index)) for index in range(size)]
         lines.append(main_diag)
         lines.append(anti_diag)
 
