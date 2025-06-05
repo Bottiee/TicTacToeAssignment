@@ -21,7 +21,6 @@
 # def check_tie(grid_obj):
 #     return all(cell != ' ' for row in grid_obj.get_rows() for cell in row)
 
-    return False
 
 # def handle_game_end(winner, game_results):
 #     if winner:
