@@ -48,6 +48,8 @@ class HistoryStorage:
         if row is None:
             self.reset_history()
             self.save_history()
+        else:
+            self.ties, self.player1_wins, self.player2_wins, self.cpu_wins, self.total_games = row
 
     def save_history(self):
         self.ensure_dir_exists()
