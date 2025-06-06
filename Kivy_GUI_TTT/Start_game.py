@@ -271,5 +271,8 @@ class TicTacToeApp(App):
         self.sm.add_widget(GameScreen(name='game', menu_manager=self.menu_manager))
         return self.sm
 
+    def on_stop(self):
+        self.menu_manager.close()
+
 if __name__ == '__main__':
     TicTacToeApp().run()
