@@ -85,7 +85,7 @@ class HistoryStorage:
             f"Total Games: {self.total_games}"
         )
 
-    def record_win(self, winner_symbol):
+    def record_win(self, winner_symbol: str) -> None:
         if winner_symbol == 'X':
             self.player1_wins += 1
         elif winner_symbol == 'O':
