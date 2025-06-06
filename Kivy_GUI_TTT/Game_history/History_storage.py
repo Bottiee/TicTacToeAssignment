@@ -1,5 +1,7 @@
 import pickle
 import os
+import sqlite3
+from typing import Optional
 
 class HistoryStorage:
     def __init__(self, filename='Game_history/game_history.pkl'):
