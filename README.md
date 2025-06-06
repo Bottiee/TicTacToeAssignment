@@ -4,4 +4,4 @@
 
 Kaip ir viskas veikia, ir nebėra kodo liekanų, nebent kažką praleidau.
 
-.EXE Veikia su pickle, db failas SQLite3 tik .py failuose.
+.EXE Veikia su pickle, db funkcionalumas SQLite3 tik .py failuose.
