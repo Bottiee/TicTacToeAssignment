@@ -4,12 +4,12 @@ class ComputerPlayer:
     def __init__(self, symbol):
         self.symbol = symbol  # 'X' or 'O'
 
-    def opponent_symbol(self):
-        return 'O' if self.symbol == 'X' else 'X'
-
-    def find_winning_move(self, grid):
-        size = len(grid)
-        lines = []
+    # def opponent_symbol(self):
+    #     return 'O' if self.symbol == 'X' else 'X'
+    #
+    # def find_winning_move(self, grid):
+    #     size = len(grid)
+    #     lines = []
 
         # Collect all rows, cols, diagonals as (line_cells, coordinates)
         # Each line is a list of (cell_value, (row, col))
