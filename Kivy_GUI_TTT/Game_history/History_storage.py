@@ -44,6 +44,7 @@ class HistoryStorage:
             'total_games': self.total_games,
         }
         with open(self.filename, 'wb') as file:
+            # noinspection PyTypeChecker
             pickle.dump(data, file)
 
     def reset_history(self):
