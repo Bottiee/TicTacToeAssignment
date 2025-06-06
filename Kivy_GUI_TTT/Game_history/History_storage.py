@@ -51,18 +51,19 @@ class HistoryStorage:
         else:
             self.ties, self.player1_wins, self.player2_wins, self.cpu_wins, self.total_games = row
 
-    def save_history(self):
-        self.ensure_dir_exists()
-        data = {
-            'ties': self.ties,
-            'player1_wins': self.player1_wins,
-            'player2_wins': self.player2_wins,
-            'cpu_wins': self.cpu_wins,
-            'total_games': self.total_games,
-        }
-        with open(self.filename, 'wb') as file:
-            # noinspection PyTypeChecker
-            pickle.dump(data, file)
+    def save_history(self) -> None:
+        # Try to insert or update row with id = 1
+        self._cursor.execute('''
+            INSERT INTO history (id, ties, player1_wins, player2_wins, cpu_wins, total_games)
+            VALUES (1, ?, ?, ?, ?, ?)
+            ON CONFLICT(id) DO UPDATE SET
+                ties=excluded.ties,
+                player1_wins=excluded.player1_wins,
+                player2_wins=excluded.player2_wins,
+                cpu_wins=excluded.cpu_wins,
+                total_games=excluded.total_games
+        ''', (self.ties, self.player1_wins, self.player2_wins, self.cpu_wins, self.total_games))
+        self._conn.commit()
 
     def reset_history(self):
         self.ties = 0
