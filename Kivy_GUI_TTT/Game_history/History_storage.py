@@ -4,9 +4,11 @@ import sqlite3
 from typing import Optional
 
 class HistoryStorage:
-    def __init__(self, filename='Game_history/game_history.pkl'):
-        self.filename = filename
-        # Initialize default stats as attributes
+    def __init__(self, db_filename: str = 'Game_history/game_history.db'):
+        self.db_filename = db_filename
+        self._conn: Optional[sqlite3.Connection] = None
+        self._cursor: Optional[sqlite3.Cursor] = None
+
         self.ties = 0
         self.player1_wins = 0
         self.player2_wins = 0
