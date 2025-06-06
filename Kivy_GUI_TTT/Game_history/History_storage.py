@@ -99,3 +99,12 @@ class HistoryStorage:
         self.ties += 1
         self.total_games += 1
         self.save_history()
+
+    def close(self) -> None:
+        if self._conn:
+            self._conn.close()
+            self._conn = None
+            self._cursor = None
+
+    def __del__(self):
+        self.close()
