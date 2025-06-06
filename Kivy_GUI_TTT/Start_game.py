@@ -39,9 +39,11 @@ class MainMenu(Screen):
 
         self.add_widget(layout)
 
+    # noinspection PyUnusedLocal
     def start_game(self, instance):
         self.manager.current = 'game'
 
+    # noinspection PyUnusedLocal
     def open_options(self, instance):
         self.manager.current = 'options'
 
@@ -101,6 +103,7 @@ class TileSizeScreen(Screen):
         self.menu_manager.set_tile_size(size)
         self.manager.current = 'options'
 
+    # noinspection PyUnusedLocal
     def go_back(self, instance):
         self.manager.current = 'options'
 
@@ -142,10 +145,12 @@ class HistoryScreen(Screen):
             self.grid.add_widget(Label(text=f"{key}:", font_size=20, size_hint_y=None, height=30))
             self.grid.add_widget(Label(text=str(value), font_size=20, size_hint_y=None, height=30))
 
+    # noinspection PyUnusedLocal
     def clear_history(self, instance):
         self.menu_manager.clear_history()
         self.populate_history()
 
+    # noinspection PyUnusedLocal
     def go_back(self, instance):
         self.manager.current = 'options'
 
@@ -230,12 +235,14 @@ class GameScreen(Screen):
         self.current_turn = 'O' if self.current_turn == 'X' else 'X'
         self.turn_label.text = f"Turn: {self.current_turn}"
 
+    # noinspection PyUnusedLocal
     def cpu_move(self, *args):
         move = get_cpu_move(self.board_state)
         if move:
             r, c = move
             self.tile_clicked(r, c)
 
+    # noinspection PyUnusedLocal
     def reset_board(self, instance):
         self.init_game()
 
@@ -244,6 +251,7 @@ class GameScreen(Screen):
             for btn in row:
                 btn.disabled = True
 
+    # noinspection PyUnusedLocal
     def go_back(self, instance):
         self.manager.current = 'main'
 
