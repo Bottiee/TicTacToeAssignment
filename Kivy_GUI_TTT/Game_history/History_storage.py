@@ -95,7 +95,7 @@ class HistoryStorage:
         self.total_games += 1
         self.save_history()
 
-    def record_tie(self):
+    def record_tie(self) -> None:
         self.ties += 1
         self.total_games += 1
         self.save_history()
