@@ -37,10 +37,32 @@ class ComputerPlayer:
         #
         # return None
 
-    def find_blocking_move(self, grid):
-        size = len(grid)
-        opponent = self.opponent_symbol()
-        lines = []
+    # def find_blocking_move(self, grid):
+    #     size = len(grid)
+    #     opponent = self.opponent_symbol()
+    #     lines = []
+    #
+    #     for row_idx in range(size):
+    #         line = [(grid[row_idx][col], (row_idx, col)) for col in range(size)]
+    #         lines.append(line)
+    #
+    #     for col_idx in range(size):
+    #         line = [(grid[row][col_idx], (row, col_idx)) for row in range(size)]
+    #         lines.append(line)
+    #
+    #     main_diag = [(grid[index][index], (index, index)) for index in range(size)]
+    #     anti_diag = [(grid[index][size - 1 - index], (index, size - 1 - index)) for index in range(size)]
+    #     lines.append(main_diag)
+    #     lines.append(anti_diag)
+    #
+    #     for line in lines:
+    #         symbols = [cell for cell, _ in line]
+    #         if symbols.count(opponent) == size - 1 and symbols.count(' ') == 1:
+    #             # Return the empty spot to block opponent win
+    #             for cell, coord in line:
+    #                 if cell == ' ':
+    #                     return coord
+    #     return None
 
         for row_idx in range(size):
             line = [(grid[row_idx][col], (row_idx, col)) for col in range(size)]
