@@ -4,15 +4,13 @@ from Kivy_GUI_TTT.Game_history.History_storage import HistoryStorage
 class MenuManager:
     def __init__(self):
         self.grid_size = 3
-        self.game_history = []
-        self.stats = {'X': 0, 'O': 0, 'Draw': 0}
         self.history_storage = HistoryStorage()
         self.cpu_enabled = False  # Flag to track CPU mode
 
     def is_cpu_enabled(self):
         return self.cpu_enabled
 
-    def set_cpu_enabled(self, value):
+    def set_cpu_enabled(self, value: bool):
         self.cpu_enabled = value
 
     def record_game_result(self, winner):
@@ -40,7 +38,6 @@ class MenuManager:
     def clear_history(self):
         self.history_storage.clear_history()
 
-
     def get_current_grid_size(self):
         return self.grid_size
 
@@ -48,7 +45,7 @@ class MenuManager:
         self.history_storage.record_tie()
 
     def set_tile_size(self, size: int):
-        if size in [3, 4, 5]:
+        if size in (3, 4, 5):
             self.grid_size = size
         else:
             raise ValueError("Invalid grid size. Must be 3, 4, or 5.")
@@ -56,7 +53,8 @@ class MenuManager:
     def get_tile_size(self) -> int:
         return self.grid_size
 
-
+    def close(self):
+        self.history_storage.close()
 
 
     ### OLD CODE ###
