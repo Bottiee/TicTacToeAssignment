@@ -76,7 +76,7 @@ class HistoryStorage:
         self.reset_history()
         self.save_history()
 
-    def get_summary(self):
+    def get_summary(self) -> str:
         return (
             f"Ties: {self.ties}\n"
             f"Player 1 Wins: {self.player1_wins}\n"
