@@ -65,7 +65,7 @@ class HistoryStorage:
         ''', (self.ties, self.player1_wins, self.player2_wins, self.cpu_wins, self.total_games))
         self._conn.commit()
 
-    def reset_history(self):
+    def reset_history(self) -> None:
         self.ties = 0
         self.player1_wins = 0
         self.player2_wins = 0
