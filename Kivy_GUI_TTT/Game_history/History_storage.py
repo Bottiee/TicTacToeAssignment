@@ -20,8 +20,8 @@ class HistoryStorage:
         self.create_table_if_not_exists()
         self.load_history()
 
-    def ensure_dir_exists(self):
-        directory = os.path.dirname(self.filename)
+    def ensure_dir_exists(self) -> None:
+        directory = os.path.dirname(self.db_filename)
         if directory and not os.path.exists(directory):
             os.makedirs(directory)
 
