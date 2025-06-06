@@ -27,15 +27,15 @@ class ComputerPlayer:
         # lines.append(anti_diag)
 
         # Check each line for winning/blocking opportunity
-        for line in lines:
-            symbols = [cell for cell, _ in line]
-            if symbols.count(self.symbol) == size - 1 and symbols.count(' ') == 1:
-                # Return the empty spot to win
-                for cell, coord in line:
-                    if cell == ' ':
-                        return coord
-
-        return None
+        # for line in lines:
+        #     symbols = [cell for cell, _ in line]
+        #     if symbols.count(self.symbol) == size - 1 and symbols.count(' ') == 1:
+        #         # Return the empty spot to win
+        #         for cell, coord in line:
+        #             if cell == ' ':
+        #                 return coord
+        #
+        # return None
 
     def find_blocking_move(self, grid):
         size = len(grid)
