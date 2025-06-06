@@ -51,7 +51,6 @@ class HistoryStorage:
             self.ties, self.player1_wins, self.player2_wins, self.cpu_wins, self.total_games = row
 
     def save_history(self) -> None:
-        # Try to insert or update row with id = 1
         self._cursor.execute('''
             INSERT INTO history (id, ties, player1_wins, player2_wins, cpu_wins, total_games)
             VALUES (1, ?, ?, ?, ?, ?)
