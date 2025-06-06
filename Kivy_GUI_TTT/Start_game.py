@@ -229,7 +229,7 @@ class GameScreen(Screen):
 
         self.switch_turn()
         if self.current_turn == 'O' and self.cpu_enabled:
-            Clock.schedule_once(lambda dt: self.cpu_move(), 0.5)
+            Clock.schedule_once(lambda dt: self.cpu_move(), 0.2)
 
     def switch_turn(self):
         self.current_turn = 'O' if self.current_turn == 'X' else 'X'
