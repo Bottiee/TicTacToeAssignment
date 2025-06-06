@@ -14,6 +14,10 @@ class HistoryStorage:
         self.player2_wins = 0
         self.cpu_wins = 0
         self.total_games = 0
+
+        self.ensure_dir_exists()
+        self.connect_db()
+        self.create_table_if_not_exists()
         self.load_history()
 
     def ensure_dir_exists(self):
