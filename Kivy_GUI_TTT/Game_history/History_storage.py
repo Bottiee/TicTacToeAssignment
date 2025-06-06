@@ -72,7 +72,7 @@ class HistoryStorage:
         self.cpu_wins = 0
         self.total_games = 0
 
-    def clear_history(self):
+    def clear_history(self) -> None:
         self.reset_history()
         self.save_history()
 
