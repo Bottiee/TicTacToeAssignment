@@ -77,9 +77,9 @@ class ComputerPlayer:
     #         return move
 
         # Try to block opponent
-        move = self.find_blocking_move(grid)
-        if move:
-            return move
+        # move = self.find_blocking_move(grid)
+        # if move:
+        #     return move
 
         # Otherwise pick random
         return self.choose_random_move(grid)
