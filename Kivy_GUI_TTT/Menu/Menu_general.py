@@ -79,3 +79,33 @@ class MenuManager:
 
     def get_tile_size(self) -> int:
         return self.grid_size
+
+
+
+    
+    ### OLD CODE ###
+
+    # def view_history(self):
+    #     if not self.game_history:
+    #         print("No games played yet.")
+    #     else:
+    #         print("Game History:")
+    #         for index, result in enumerate(self.game_history, start=1):
+    #             print(f"{index}. {result}")
+    #     input("Press Enter to return to options...")
+    #
+    # def show_stats(self):
+    #     print("Total Wins:")
+    #     for player, count in self.stats.items():
+    #         print(f"{player}: {count}")
+    #     input("Press Enter to return to options...")
+    #
+    # def change_grid_size(self):
+    #     print("Choose grid size (3-5):")
+    #     user_input = input("Enter grid size: ")
+    #     if user_input in ['3', '4', '5']:
+    #         self.grid_size = int(user_input)
+    #         print(f"Grid size set to {self.grid_size}x{self.grid_size}")
+    #     else:
+    #         print("Invalid choice. Grid size unchanged.")
+    #     input("Press Enter to return to options...")
