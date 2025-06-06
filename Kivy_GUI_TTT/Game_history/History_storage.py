@@ -25,20 +25,27 @@ class HistoryStorage:
         if directory and not os.path.exists(directory):
             os.makedirs(directory)
 
-    def load_history(self):
-        if not os.path.exists(self.filename):
-            self.save_history()  # Create default file
-            return
-        try:
-            with open(self.filename, 'rb') as f:
-                data = pickle.load(f)
-                # Load into attributes with fallback defaults
-                self.ties = data.get('ties', 0)
-                self.player1_wins = data.get('player1_wins', 0)
-                self.player2_wins = data.get('player2_wins', 0)
-                self.cpu_wins = data.get('cpu_wins', 0)
-                self.total_games = data.get('total_games', 0)
-        except (EOFError, pickle.PickleError):
+    def connect_db(self) -> None:
+        self._conn = sqlite3.connect(self.db_filename)
+        self._cursor = self._conn.cursor()
+
+    def create_table_if_not_exists(self) -> None:
+        self._cursor.execute('''
+            CREATE TABLE IF NOT EXISTS history (
+                id INTEGER PRIMARY KEY CHECK (id = 1),
+                ties INTEGER NOT NULL,
+                player1_wins INTEGER NOT NULL,
+                player2_wins INTEGER NOT NULL,
+                cpu_wins INTEGER NOT NULL,
+                total_games INTEGER NOT NULL
+            )
+        ''')
+        self._conn.commit()
+
+    def load_history(self) -> None:
+        self._cursor.execute('SELECT ties, player1_wins, player2_wins, cpu_wins, total_games FROM history WHERE id = 1')
+        row = self._cursor.fetchone()
+        if row is None:
             self.reset_history()
             self.save_history()
 
