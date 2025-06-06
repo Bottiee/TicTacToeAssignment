@@ -82,7 +82,7 @@ class ComputerPlayer:
         #     return move
 
         # Otherwise pick random
-        return self.choose_random_move(grid)
+        # return self.choose_random_move(grid)
 
 def get_cpu_move(grid):
     size = len(grid)
