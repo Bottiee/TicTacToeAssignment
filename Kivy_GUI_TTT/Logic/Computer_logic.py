@@ -70,11 +70,11 @@ class ComputerPlayer:
         empty_cells = [(row, col) for row in range(size) for col in range(size) if grid[row][col] == ' ']
         return random.choice(empty_cells) if empty_cells else None
 
-    def make_move(self, grid):
-        # Try to win
-        move = self.find_winning_move(grid)
-        if move:
-            return move
+    # def make_move(self, grid):
+    #     # Try to win
+    #     move = self.find_winning_move(grid)
+    #     if move:
+    #         return move
 
         # Try to block opponent
         move = self.find_blocking_move(grid)
