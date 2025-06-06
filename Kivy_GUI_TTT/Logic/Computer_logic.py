@@ -13,18 +13,18 @@ class ComputerPlayer:
 
         # Collect all rows, cols, diagonals as (line_cells, coordinates)
         # Each line is a list of (cell_value, (row, col))
-        for row_idx in range(size):
-            line = [(grid[row_idx][col], (row_idx, col)) for col in range(size)]
-            lines.append(line)
-
-        for col_idx in range(size):
-            line = [(grid[row][col_idx], (row, col_idx)) for row in range(size)]
-            lines.append(line)
-
-        main_diag = [(grid[index][index], (index, index)) for index in range(size)]
-        anti_diag = [(grid[index][size - 1 - index], (index, size - 1 - index)) for index in range(size)]
-        lines.append(main_diag)
-        lines.append(anti_diag)
+        # for row_idx in range(size):
+        #     line = [(grid[row_idx][col], (row_idx, col)) for col in range(size)]
+        #     lines.append(line)
+        #
+        # for col_idx in range(size):
+        #     line = [(grid[row][col_idx], (row, col_idx)) for row in range(size)]
+        #     lines.append(line)
+        #
+        # main_diag = [(grid[index][index], (index, index)) for index in range(size)]
+        # anti_diag = [(grid[index][size - 1 - index], (index, size - 1 - index)) for index in range(size)]
+        # lines.append(main_diag)
+        # lines.append(anti_diag)
 
         # Check each line for winning/blocking opportunity
         for line in lines:
