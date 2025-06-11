@@ -9,9 +9,6 @@ def get_cpu_move(grid):
     empty_cells = [(rows, columns) for rows in range(size) for columns in range(size) if grid[rows][columns] == '']
     return random.choice(empty_cells) if empty_cells else None
 
-
-
-
     ### OLD CODE ###
 
     # def opponent_symbol(self):
