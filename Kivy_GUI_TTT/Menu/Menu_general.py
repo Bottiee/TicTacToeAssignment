@@ -5,7 +5,7 @@ class MenuManager:
     def __init__(self):
         self.grid_size = 3
         self.history_storage = HistoryStorage()
-        self.cpu_enabled = False  # Flag to track CPU mode
+        self.cpu_enabled = True  # Flag to track CPU mode
 
     def is_cpu_enabled(self):
         return self.cpu_enabled
@@ -16,7 +16,7 @@ class MenuManager:
     def record_game_result(self, winner):
         if winner is None:
             self.history_storage.record_tie()
-        elif winner == 'O' and self.is_cpu_enabled():  # some flag you set when vs CPU
+        elif winner == 'O' and self.is_cpu_enabled():
             self.history_storage.record_win('CPU')
         elif winner == 'X':
             self.history_storage.record_win('X')
