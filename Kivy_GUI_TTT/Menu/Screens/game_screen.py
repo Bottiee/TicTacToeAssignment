@@ -32,17 +32,14 @@ class GameScreen(Screen):
         self.current_turn = 'X'
         self.board_state = [['' for _ in range(self.board_size)] for _ in range(self.board_size)]
 
-        # Clear and build UI
+        # Clear existing widgets from the screen
         self.clear_widgets()
+
+        # Initialize layout and turn label ONCE
         self.layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
         self.turn_label = Label(text=f"Turn: {self.current_turn}", font_size=24, size_hint=(1, 0.1))
         self.layout.add_widget(self.turn_label)
-        self.grid = GridLayout(cols=self.board_size, rows=self.board_size, spacing=5, size_hint=(1, 0.75))
-        self.buttons = []
-        # CPU Flag check
-        self.layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
-        self.turn_label = Label(text=f"Turn: {self.current_turn}", font_size=24, size_hint=(1, 0.1))
-        self.layout.add_widget(self.turn_label)
+
         # Show CPU info if enabled
         if self.cpu_enabled:
             cpu_info_label = Label(
@@ -53,6 +50,9 @@ class GameScreen(Screen):
             )
             self.layout.add_widget(cpu_info_label)
 
+        # Initialize the game grid
+        self.grid = GridLayout(cols=self.board_size, rows=self.board_size, spacing=5, size_hint=(1, 0.75))
+        self.buttons = [] # Ensure buttons list is cleared for new game
 
         for row in range(self.board_size):
             btn_row = []
@@ -64,6 +64,7 @@ class GameScreen(Screen):
             self.buttons.append(btn_row)
         self.layout.add_widget(self.grid)
 
+        # Add control buttons
         btn_layout = BoxLayout(size_hint=(1, 0.15), spacing=10)
         reset_btn = Button(text='Reset Board')
         reset_btn.bind(on_release=self.reset_board)
@@ -73,7 +74,7 @@ class GameScreen(Screen):
         btn_layout.add_widget(back_btn)
 
         self.layout.add_widget(btn_layout)
-        self.add_widget(self.layout)
+        self.add_widget(self.layout) # Add the main layout to the screen
 
     def tile_clicked(self, row, col):
         if self.board_state[row][col] != '':
@@ -120,4 +121,3 @@ class GameScreen(Screen):
     # noinspection PyUnusedLocal
     def go_back(self, instance):
         self.manager.current = 'main'
-

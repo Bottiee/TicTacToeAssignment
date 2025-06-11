@@ -81,6 +81,7 @@ class SilkWidget(Widget):
         Clock.schedule_interval(self.update_glsl, 1/60)
         self.bind(pos=self._update_rect, size=self._update_rect)
 
+    # noinspection PyUnusedLocal
     def _update_rect(self, *args):
         self.rect.pos = self.pos
         self.rect.size = self.size
@@ -103,16 +104,11 @@ class SilkApp(App):
         Window.bind(on_resize=self._update_size)
         return self.root
 
-        # noinspection PyUnusedLocal
+    # noinspection PyUnusedLocal
     def _update_size(self, window, width, height):
         self.root.pos = (-1, -1)
         self.root.size = (width, height)
 
-        # noinspection PyUnusedLocal
-    def on_window_resize(self, window, width, height):
-        # If you want to manually control size, update here
-        # self.root.size = (width, height)
-        pass
 
 if __name__ == '__main__':
     SilkApp().run()
