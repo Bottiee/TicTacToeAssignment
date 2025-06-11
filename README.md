@@ -40,3 +40,11 @@ However, feedback, suggestions, or pull requests for code clarity and structure 
 ### https://www.reactbits.dev/
 
 Future plans are still in development.
+
+## License / Distribution
+
+This project currently does **not** include an open-source license, as it may eventually evolve into a published commercial product.
+
+Until then, all rights are reserved.
+
+If you have any questions or feedback, feel free to open an issue or contact me directly.
