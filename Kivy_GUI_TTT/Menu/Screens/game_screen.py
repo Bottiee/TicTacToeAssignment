@@ -39,6 +39,20 @@ class GameScreen(Screen):
         self.layout.add_widget(self.turn_label)
         self.grid = GridLayout(cols=self.board_size, rows=self.board_size, spacing=5, size_hint=(1, 0.75))
         self.buttons = []
+        # CPU Flag check
+        self.layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
+        self.turn_label = Label(text=f"Turn: {self.current_turn}", font_size=24, size_hint=(1, 0.1))
+        self.layout.add_widget(self.turn_label)
+        # Show CPU info if enabled
+        if self.cpu_enabled:
+            cpu_info_label = Label(
+                text="CPU Mode: ON",
+                color=(1, 0.5, 0, 1),  # Orange color
+                font_size=18,
+                size_hint=(1, 0.1)
+            )
+            self.layout.add_widget(cpu_info_label)
+
 
         for row in range(self.board_size):
             btn_row = []
