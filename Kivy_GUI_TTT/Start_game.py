@@ -1,5 +1,5 @@
 from kivy.app import App
-from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import ScreenManager
 from kivy.core.window import Window
 from Kivy_GUI_TTT.Menu.Screens.main_screen import MainMenu
 from Kivy_GUI_TTT.Menu.Menu_general import MenuManager
@@ -45,6 +45,7 @@ class RootWidget(FloatLayout):
         # Bind window resize to update shader background size
         Window.bind(on_resize=self._on_window_resize)
 
+    # noinspection PyUnusedLocal
     def _on_window_resize(self, window, width, height):
         self.background.pos = (-1, -1)
         self.background.size = (width, height)
