@@ -38,9 +38,6 @@ class MenuManager:
     def clear_history(self):
         self.history_storage.clear_history()
 
-    def get_current_grid_size(self):
-        return self.grid_size
-
     def record_draw(self):
         self.history_storage.record_tie()
 
