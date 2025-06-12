@@ -12,9 +12,6 @@ from kivy.uix.floatlayout import FloatLayout
 
 Window.size = (400, 600)
 
-def quit_game():
-    App.get_running_app().stop()
-
 class RootWidget(FloatLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
