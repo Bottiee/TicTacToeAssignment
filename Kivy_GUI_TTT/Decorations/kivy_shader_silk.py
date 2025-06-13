@@ -52,7 +52,7 @@ void main() {
                     0.4 * sin(5.0 * (tex.x + tex.y +
                             cos(3.0 * tex.x + 5.0 * tex.y) +
                             0.02 * tOffset) +
-                            sin(20.0 * (tex.x + tex.y - 0.1 * tOffset)));
+                            sin(20.0 * (tex.x + tex.y - 0.05 * tOffset)));
 
     vec4 col = vec4(uColor, 1.0) * vec4(pattern) - rnd / 15.0 * uNoiseIntensity;
     col.a = 1.0;
@@ -73,10 +73,10 @@ class SilkWidget(Widget):
 
         self.time = 0.0
         self.uColor = (0.2, 0.0, 0.2)  # Purple color
-        self.uSpeed = 5.0
-        self.uScale = 1.0
-        self.uRotation = 0.3
-        self.uNoiseIntensity = 1.5
+        self.uSpeed = 2.0
+        self.uScale = 1.20
+        self.uRotation = 0.1
+        self.uNoiseIntensity = 1.0
 
         Clock.schedule_interval(self.update_glsl, 1/60)
         self.bind(pos=self._update_rect, size=self._update_rect)
