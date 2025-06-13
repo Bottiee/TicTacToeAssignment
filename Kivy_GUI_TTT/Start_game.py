@@ -49,8 +49,5 @@ class TicTacToeApp(App):
     def build(self):
         return RootWidget()
 
-    def on_stop(self):
-        pass
-
 if __name__ == '__main__':
     TicTacToeApp().run()
