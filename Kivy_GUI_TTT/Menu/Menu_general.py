@@ -42,10 +42,10 @@ class MenuManager:
         self.history_storage.record_tie()
 
     def set_tile_size(self, size: int):
-        if size in (3, 4, 5):
+        if size in (3, 4, 5, 6, 7, 8, 9):
             self.grid_size = size
         else:
-            raise ValueError("Invalid grid size. Must be 3, 4, or 5.")
+            raise ValueError("Invalid grid size. Must be 3, 4, up to 9.")
 
     def get_tile_size(self) -> int:
         return self.grid_size

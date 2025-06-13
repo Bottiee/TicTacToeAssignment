@@ -12,7 +12,7 @@ class TileSizeScreen(Screen):
         title = Label(text="Select Tile Size", font_size=32, size_hint=(1, 0.2))
         layout.add_widget(title)
 
-        for size in range(3, 6):
+        for size in range(3, 10):
             btn = Button(text=f"{size} x {size}", size_hint=(1, 0.15))
             btn.bind(on_release=lambda inst, s=size: self.set_tile_size(s))
             layout.add_widget(btn)

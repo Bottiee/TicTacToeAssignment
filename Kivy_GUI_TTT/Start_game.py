@@ -10,7 +10,7 @@ from Kivy_GUI_TTT.Menu.Screens.game_screen import GameScreen
 from Kivy_GUI_TTT.Decorations.kivy_shader_silk import SilkWidget
 from kivy.uix.floatlayout import FloatLayout
 
-Window.size = (500, 700)
+Window.size = (700, 900)
 
 class RootWidget(FloatLayout):
     def __init__(self, **kwargs):
