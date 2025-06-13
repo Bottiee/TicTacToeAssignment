@@ -11,7 +11,7 @@ It also was made into PyQt5 and then refactored into Kivy. It was a pain.
 
 ## Features
 - Kivy-based GUI
-- Supports [3x3/5x5] grid sizes
+- Supports [3x3 up to 9x9] grid sizes (Easy to modify)
 - Player vs Player (more advanced CPU coming soon)
 
 ## Project Structure
