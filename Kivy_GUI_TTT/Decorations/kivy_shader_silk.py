@@ -72,7 +72,7 @@ class SilkWidget(Widget):
             self.rect = Rectangle(pos=self.pos, size=self.size)
 
         self.time = 0.0
-        self.uColor = (0.4, 0.0, 0.4)  # Purple color
+        self.uColor = (0.2, 0.0, 0.2)  # Purple color
         self.uSpeed = 5.0
         self.uScale = 1.0
         self.uRotation = 0.3
