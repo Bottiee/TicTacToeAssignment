@@ -19,12 +19,8 @@ class RootWidget(FloatLayout):
         # Set initial size and position
         initial_pos = (-1, -1)
         initial_size = Window.size
-
+        # Add background widget
         self.background = SilkWidget(size=initial_size, pos=initial_pos)
-        self.add_widget(self.background)
-
-        # Add shader background
-        self.background = SilkWidget(size=Window.size, pos=(0, 0))
         self.add_widget(self.background)
 
         # Create ScreenManager and add all screens
