@@ -16,7 +16,7 @@ void main() {
 
 FRAGMENT_SHADER = '''
 #ifdef GL_ES
-    precision mediump float;
+    precision medium float;
 #endif
 
 varying vec2 vUv;
