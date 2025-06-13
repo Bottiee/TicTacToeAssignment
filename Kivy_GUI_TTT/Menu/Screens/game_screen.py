@@ -36,7 +36,7 @@ class GameScreen(Screen):
         self.clear_widgets()
 
         # Initialize layout and turn label ONCE
-        self.layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
+        self.layout = BoxLayout(orientation='vertical', padding=15, spacing=15)
         self.turn_label = Label(text=f"Turn: {self.current_turn}", font_size=24, size_hint=(1, 0.1))
         self.layout.add_widget(self.turn_label)
 
