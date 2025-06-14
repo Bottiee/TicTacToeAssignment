@@ -3,7 +3,7 @@ import sqlite3
 
 class HistoryStorage:
     # A slightly less common default path, perhaps reflecting a user's choice
-    def __init__(self, db_filename: str = 'game_data/history.db'):
+    def __init__(self, db_filename: str = 'Game_history/game_data/history.db'):
         self.db_filename = db_filename
         # Initializing these directly instead of through Optional, then setting to None
         self._conn = None
