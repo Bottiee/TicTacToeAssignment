@@ -2,10 +2,11 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
-from Kivy_GUI_TTT.Logic.Conditionals import check_win_condition, check_draw_condition
-from Kivy_GUI_TTT.Logic.Computer_logic import get_cpu_move
+from Kivy_GUI_TTT.Logic.Conditionals import check_win_condition
+from Kivy_GUI_TTT.Logic.Conditionals import check_draw_condition
 from kivy.clock import Clock
 from kivy.uix.label import Label
+from Kivy_GUI_TTT.Logic.Computer_logic import ComputerLogic
 
 class GameScreen(Screen):
     def __init__(self, menu_manager, **kwargs):
@@ -25,6 +26,34 @@ class GameScreen(Screen):
         # Rebuild UI on entering screen to reflect tile size changes dynamically
         self.bind(on_enter=lambda *_: self.init_game())
 
+    def cpu_move(self, *args):
+        if self.ai:
+            move = self.ai.get_ai_move(self.board_state)
+            if move:
+                r, c = move
+                # Only make move if cell is empty (just to be safe)
+                if self.board_state[r][c] == '':
+                    self.board_state[r][c] = 'O'  # AI is always 'O'
+                    self.buttons[r][c].text = 'O'
+
+                    if check_win_condition(self.board_state, 'O'):
+                        self.turn_label.text = "O wins!"
+                        self.menu_manager.record_game_result('O')
+                        self.disable_board()
+                        return
+
+                    if check_draw_condition(self.board_state):
+                        self.turn_label.text = "It's a draw!"
+                        self.disable_board()
+                        self.menu_manager.record_draw()
+                        return
+
+                    # Switch turn back to 'X' after AI move
+                    self.current_turn = 'X'
+                    self.turn_label.text = f"Turn: {self.current_turn}"
+            else:
+                print("AI did not return a valid move")
+
     def init_game(self):
         # Reset state
         self.board_size = self.menu_manager.get_tile_size()
@@ -39,6 +68,11 @@ class GameScreen(Screen):
         self.layout = BoxLayout(orientation='vertical', padding=15, spacing=15)
         self.turn_label = Label(text=f"Turn: {self.current_turn}", font_size=24, size_hint=(1, 0.1))
         self.layout.add_widget(self.turn_label)
+
+        if self.cpu_enabled:
+            self.ai = ComputerLogic(board_size=self.board_size)
+        else:
+            self.ai = None
 
         # Show CPU info if enabled
         if self.cpu_enabled:
@@ -101,13 +135,6 @@ class GameScreen(Screen):
     def switch_turn(self):
         self.current_turn = 'O' if self.current_turn == 'X' else 'X'
         self.turn_label.text = f"Turn: {self.current_turn}"
-
-    # noinspection PyUnusedLocal
-    def cpu_move(self, *args):
-        move = get_cpu_move(self.board_state)
-        if move:
-            r, c = move
-            self.tile_clicked(r, c)
 
     # noinspection PyUnusedLocal
     def reset_board(self, instance):
