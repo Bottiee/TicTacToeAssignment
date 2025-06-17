@@ -1,27 +1,45 @@
 # Conditionals.py
 
-def check_win_condition(board, symbol):
-    size = len(board)
+def check_win_condition(game_board, player_symbol):
+    board_size = len(game_board)
 
-    # Check rows and columns
-    for index in range(size):
-        if all(cell == symbol for cell in board[index]):
-            return True
-        if all(row[index] == symbol for row in board):
-            return True
+    # Check rows for a winning sequence of three
+    for row_index in range(board_size):
+        for column_index in range(board_size - 2):
+            if (game_board[row_index][column_index] == player_symbol and
+                game_board[row_index][column_index + 1] == player_symbol and
+                game_board[row_index][column_index + 2] == player_symbol):
+                return True
 
-    # Check diagonals
-    if all(board[index][index] == symbol for index in range(size)):
-        return True
-    if all(board[index][size - 1 - index] == symbol for index in range(size)):
-        return True
+    # Check columns for a winning sequence of three
+    for column_index in range(board_size):
+        for row_index in range(board_size - 2):
+            if (game_board[row_index][column_index] == player_symbol and
+                game_board[row_index + 1][column_index] == player_symbol and
+                game_board[row_index + 2][column_index] == player_symbol):
+                return True
+
+    # Check main diagonal (top-left to bottom-right) for a winning sequence of three
+    for row_index in range(board_size - 2):
+        for column_index in range(board_size - 2):
+            if (game_board[row_index][column_index] == player_symbol and
+                game_board[row_index + 1][column_index + 1] == player_symbol and
+                game_board[row_index + 2][column_index + 2] == player_symbol):
+                return True
+
+    # Check anti-diagonal (top-right to bottom-left) for a winning sequence of three
+    for row_index in range(board_size - 2):
+        for column_index in range(2, board_size):
+            if (game_board[row_index][column_index] == player_symbol and
+                game_board[row_index + 1][column_index - 1] == player_symbol and
+                game_board[row_index + 2][column_index - 2] == player_symbol):
+                return True
 
     return False
 
 
-def check_draw_condition(board):
-    return all(cell != '' for row in board for cell in row)
-
+def check_draw_condition(game_board):
+    return all(cell != '' for row in game_board for cell in row)
 
 
 ### OLD CODE ###

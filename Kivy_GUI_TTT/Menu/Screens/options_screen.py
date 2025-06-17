@@ -12,6 +12,10 @@ class OptionsScreen(Screen):
         title = Label(text="Options Menu", font_size=32, size_hint=(1, 0.2))
         layout.add_widget(title)
 
+        leaderboard_btn = Button(text='View Leaderboard', size_hint=(1, 0.1))
+        leaderboard_btn.bind(on_release=self.goto_leaderboard)
+        layout.add_widget(leaderboard_btn)
+
         btn_history = Button(text="View Game History", size_hint=(1, 0.2))
         btn_tile_size = Button(text="Change Tile Size", size_hint=(1, 0.2))
 
@@ -44,3 +48,6 @@ class OptionsScreen(Screen):
         # Update button text and background color based on new state
         instance.text = f"CPU Mode: {'ON' if new_state else 'OFF'}"
         instance.background_color = (0, 1, 0, 1) if new_state else (1, 0, 0, 1)
+
+    def goto_leaderboard(self, instance):
+        self.manager.current = 'leaderboard'

@@ -1,11 +1,12 @@
-# Menu_general.py
 from Kivy_GUI_TTT.Game_history.History_storage import HistoryStorage
 
 class MenuManager:
-    def __init__(self):
+    def __init__(self, screen_manager):
+        self.screen_manager = screen_manager
         self.grid_size = 3
         self.history_storage = HistoryStorage()
-        self.cpu_enabled = True  # Flag to track CPU mode
+        self.cpu_enabled = True
+
 
     def is_cpu_enabled(self):
         return self.cpu_enabled
@@ -45,38 +46,10 @@ class MenuManager:
         if size in (3, 4, 5, 6, 7, 8, 9):
             self.grid_size = size
         else:
-            raise ValueError("Invalid grid size. Must be 3, 4, up to 9.")
+            raise ValueError("Invalid grid size. Must be 3 to 9.")
 
     def get_tile_size(self) -> int:
         return self.grid_size
 
     def close(self):
         self.history_storage.close()
-
-
-    ### OLD CODE ###
-
-    # def view_history(self):
-    #     if not self.game_history:
-    #         print("No games played yet.")
-    #     else:
-    #         print("Game History:")
-    #         for index, result in enumerate(self.game_history, start=1):
-    #             print(f"{index}. {result}")
-    #     input("Press Enter to return to options...")
-    #
-    # def show_stats(self):
-    #     print("Total Wins:")
-    #     for player, count in self.stats.items():
-    #         print(f"{player}: {count}")
-    #     input("Press Enter to return to options...")
-    #
-    # def change_grid_size(self):
-    #     print("Choose grid size (3-5):")
-    #     user_input = input("Enter grid size: ")
-    #     if user_input in ['3', '4', '5']:
-    #         self.grid_size = int(user_input)
-    #         print(f"Grid size set to {self.grid_size}x{self.grid_size}")
-    #     else:
-    #         print("Invalid choice. Grid size unchanged.")
-    #     input("Press Enter to return to options...")
