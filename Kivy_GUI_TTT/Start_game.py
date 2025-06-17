@@ -1,6 +1,9 @@
+# Kivy_GUI_TTT/Start_game.py
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
 from kivy.core.window import Window
+from kivy.uix.floatlayout import FloatLayout
+
 from Kivy_GUI_TTT.Menu.Screens.main_screen import MainMenu
 from Kivy_GUI_TTT.Menu.Menu_general import MenuManager
 from Kivy_GUI_TTT.Menu.Screens.options_screen import OptionsScreen
@@ -8,8 +11,8 @@ from Kivy_GUI_TTT.Menu.Screens.history_screen import HistoryScreen
 from Kivy_GUI_TTT.Menu.Screens.tile_size_screen import TileSizeScreen
 from Kivy_GUI_TTT.Menu.Screens.game_screen import GameScreen
 from Kivy_GUI_TTT.Menu.Screens.leaderboard_screen import LeaderboardScreen
+from Kivy_GUI_TTT.Menu.Screens.reg_sreen import RegisterUserScreen
 from Kivy_GUI_TTT.Decorations.kivy_shader_silk import SilkWidget
-from kivy.uix.floatlayout import FloatLayout
 
 Window.size = (700, 900)
 
@@ -35,6 +38,8 @@ class RootWidget(FloatLayout):
         self.sm.add_widget(HistoryScreen(name='history', menu_manager=self.menu_manager))
         self.sm.add_widget(TileSizeScreen(name='tile_size', menu_manager=self.menu_manager))
         self.sm.add_widget(LeaderboardScreen(name='leaderboard'))
+        self.sm.add_widget(RegisterUserScreen(name='register', menu_manager=self.menu_manager))  # Add here
+
         self.sm.current = 'main'
         self.add_widget(self.sm)
 

@@ -71,13 +71,13 @@ class ComputerLogic:
     def __init__(self, board_size):
         self.board_size = board_size
         self.model_filenames = {
-            3: "rl_mcts_tictactoe_3x3_episode_1000.pth",
-            4: "rl_mcts_tictactoe_4x4_episode_1000.pth",
-            5: "rl_mcts_tictactoe_5x5_episode_3500.pth",
-            6: "rl_mcts_tictactoe_6x6_episode_500.pth",
-            7: "rl_mcts_tictactoe_7x7_episode_500.pth",
-            8: "rl_mcts_tictactoe_8x8_episode_500.pth",
-            9: "rl_mcts_tictactoe_9x9_episode_500.pth",
+            3: "rl_mcts_tictactoe_3x3_episode_500.pth",
+            4: "rl_mcts_tictactoe_4x4_episode_500.pth",
+    #        5: "rl_mcts_tictactoe_5x5_episode_500.pth",
+   #         6: "rl_mcts_tictactoe_6x6_episode_500.pth",
+  #          7: "rl_mcts_tictactoe_7x7_episode_500.pth",
+ #           8: "rl_mcts_tictactoe_8x8_episode_500.pth",
+#            9: "rl_mcts_tictactoe_9x9_episode_500.pth",
         }
 
         self.model = None

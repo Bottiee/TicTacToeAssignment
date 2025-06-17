@@ -86,7 +86,7 @@ class GameScreen(Screen):
 
         # Initialize the game grid
         self.grid = GridLayout(cols=self.board_size, rows=self.board_size, spacing=5, size_hint=(1, 0.75))
-        self.buttons = [] # Ensure buttons list is cleared for new game
+        self.buttons = [] # Ensure buttons list is cleared for new cdgame
 
         for row in range(self.board_size):
             btn_row = []

@@ -502,7 +502,7 @@ def train_agent(agent, num_episodes):
 
 # --- Main Execution Block ---
 if __name__ == "__main__":
-    BOARD_DIM = 4
+    BOARD_DIM = 5
     CONSECUTIVE_NEEDED_FOR_WIN = 3  # Fixed for classical Tic-Tac-Toe
     NUM_EPISODES = 500
     C_PUCT_CONST = 1.0
