@@ -5,7 +5,7 @@
 #         # === Main Menu ===
 #         self.main_menu_text = "=== Main Menu ===\n1. Start Game\n2. Options\n3. Quit"
 #         self.main_menu_input = "Select an option: "
-#         self.exit_game = "Quitting the game. Goodbye!"
+#         self.exit_game = "Quitting the Maingame. Goodbye!"
 #         self.invalid_input = "Invalid input. Please try again."
 #
 #         # === Options Menu ===
@@ -28,13 +28,13 @@
 #
 #         # === Move Input ===
 #         self.move_input = "Enter your move as Column-Row (e.g., 2-2), or 'q' to quit: "
-#         self.quit_game = "Quitting the game..."
+#         self.quit_game = "Quitting the Maingame..."
 #         self.invalid_move_format = "Invalid input format or out-of-bounds. Please use 'Column-Row' within grid limits."
 #         self.cell_taken = "Cell already taken. Try another."
 #         self.invalid_numeric_input = "Invalid input. Please enter numeric values."
 #         self.unexpected_error = "Unexpected error: {error}"
 #
 #         # === Unused Stubs (keep for dev/testing purposes) ===
-#         self.start_game = "Starting game...\n(Game logic not yet implemented)"
-#         self.history_stub = "Displaying game history...\n"
+#         self.start_game = "Starting Maingame...\n(Game logic not yet implemented)"
+#         self.history_stub = "Displaying Maingame history...\n"
 #         self.tileset_stub = "Changing tile size...\n(Tile size logic not yet implemented)"
