@@ -1,11 +1,17 @@
+# leaderboard/models.py
 from django.db import models
 from django.contrib.auth.models import User
 
 class Score(models.Model):
-    player_name = models.CharField(max_length=100)
-    score = models.IntegerField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='score')  # <--- important here
-    timestamp = models.DateTimeField(auto_now_add=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='scores')
+    total_games_played = models.IntegerField(default=0)
+    player1_wins = models.IntegerField(default=0)
+    player2_wins = models.IntegerField(default=0)
+    cpu_wins = models.IntegerField(default=0)
+    ties = models.IntegerField(default=0)
 
     def __str__(self):
-        return f"{self.player_name}: {self.score}"
+        return f"{self.user.username}'s Score"
+
+    # You might want to add a method to calculate derived stats if any
+    # For example, win_loss_ratio, etc.
