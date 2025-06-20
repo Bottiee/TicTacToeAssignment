@@ -11,9 +11,9 @@ from tictactoe_django_integration.Kivy_GUI_TTT.Menu.Screens.history_screen impor
 from tictactoe_django_integration.Kivy_GUI_TTT.Menu.Screens.tile_size_screen import TileSizeScreen
 from tictactoe_django_integration.Kivy_GUI_TTT.Menu.Screens.game_screen import GameScreen
 from tictactoe_django_integration.Kivy_GUI_TTT.Menu.Screens.leaderboard_screen import LeaderboardScreen
-from tictactoe_django_integration.Kivy_GUI_TTT.Menu.Screens.reg_sreen import RegisterUserScreen
+from tictactoe_django_integration.Kivy_GUI_TTT.Menu.Screens.reg_screen import RegisterUserScreen
 from tictactoe_django_integration.Kivy_GUI_TTT.Decorations.kivy_shader_silk import SilkWidget
-from tictactoe_django_integration.Kivy_GUI_TTT.Menu.Screens.logic_screen import LoginScreen
+from tictactoe_django_integration.Kivy_GUI_TTT.Menu.Screens.login_screen import LoginScreen
 
 Window.size = (700, 900)
 
