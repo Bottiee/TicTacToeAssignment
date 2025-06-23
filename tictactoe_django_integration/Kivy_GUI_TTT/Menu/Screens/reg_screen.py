@@ -14,13 +14,12 @@ class RegisterUserScreen(Screen):
         self.menu_manager = menu_manager
 
         layout = BoxLayout(orientation='vertical', spacing=10, padding=40)
-
         layout.add_widget(Label(text='Register User', font_size=24))
 
-        self.username_input = TextInput(hint_text='Username', multiline=False)
+        self.username_input = TextInput(hint_text='Username', multiline=False, halign='center')
         layout.add_widget(self.username_input)
 
-        self.password_input = TextInput(hint_text='Password', multiline=False, password=True)
+        self.password_input = TextInput(hint_text='Password', multiline=False, password=True, halign='center')
         layout.add_widget(self.password_input)
 
         register_btn = Button(text='Register')
@@ -48,7 +47,7 @@ class RegisterUserScreen(Screen):
         threading.Thread(target=self._send_registration_request, args=(username, password), daemon=True).start()
 
     def _send_registration_request(self, username, password):
-        url = "http://127.0.0.1:8000/api/register/"  # Your Django registration endpoint
+        url = "http://127.0.0.1:8000/api/register/"
         payload = {
             "username": username,
             "password": password
@@ -58,7 +57,6 @@ class RegisterUserScreen(Screen):
             if response.status_code == 201:
                 self.update_status("Registration successful!")
             else:
-                # Extract error message from Django response
                 try:
                     err = response.json().get('error', response.text)
                 except Exception:

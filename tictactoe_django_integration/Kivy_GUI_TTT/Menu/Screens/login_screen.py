@@ -10,6 +10,7 @@ from kivy.uix.button import Button
 from kivy.utils import get_color_from_hex
 from kivy.app import App
 from kivy.clock import mainthread
+from kivy.uix.widget import Widget
 
 
 class LoginScreen(Screen):
@@ -27,24 +28,38 @@ class LoginScreen(Screen):
         )
         layout.add_widget(title)
 
+        username_box = BoxLayout(size_hint=(1, 0.1), padding=0)
+        username_box_inner = BoxLayout(size_hint=(None, 1), width=300)  # Fixed width, adjust if needed
         self.username_input = TextInput(
             hint_text='Username',
             font_size='20sp',
-            size_hint=(1, 0.1),
+            size_hint=(1, 1),
             padding=[10, 10, 10, 10],
-            multiline=False
+            multiline=False,
+            halign='center'
         )
-        layout.add_widget(self.username_input)
+        username_box_inner.add_widget(self.username_input)
+        username_box.add_widget(Widget())  # spacer left
+        username_box.add_widget(username_box_inner)
+        username_box.add_widget(Widget())  # spacer right
+        layout.add_widget(username_box)
 
+        password_box = BoxLayout(size_hint=(1, 0.1), padding=0)
+        password_box_inner = BoxLayout(size_hint=(None, 1), width=300)
         self.password_input = TextInput(
             hint_text='Password',
             font_size='20sp',
-            size_hint=(1, 0.1),
+            size_hint=(1, 1),
             padding=[10, 10, 10, 10],
             multiline=False,
-            password=True
+            password=True,
+            halign='center'
         )
-        layout.add_widget(self.password_input)
+        password_box_inner.add_widget(self.password_input)
+        password_box.add_widget(Widget())
+        password_box.add_widget(password_box_inner)
+        password_box.add_widget(Widget())
+        layout.add_widget(password_box)
 
         login_btn = Button(
             text='Login',
