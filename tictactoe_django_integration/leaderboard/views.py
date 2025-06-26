@@ -1,12 +1,17 @@
-# C:\Users\botyl\PycharmProjects\KryziukaiNuliukaiUzduotis\tictactoe_django_integration\leaderboard\views.py
+# Standard
+import traceback
+# Django
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.contrib.auth.models import User
+# DRF
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated, AllowAny  # Import AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework import status
-from django.contrib.auth.models import User
+# Local
 from .models import Score
+
 
 def home_view(request):
     top_scores = Score.objects.select_related('user').order_by('-total_games_played')
@@ -20,6 +25,7 @@ def home_view(request):
         'users': users_data_for_template
     }
     return render(request, 'home.html', context)
+
 
 # leaderboard_view - (Keep as is, but consider @permission_classes([AllowAny]) if public)
 @api_view(['GET'])
@@ -68,6 +74,7 @@ def register_user(request):
         traceback.print_exc()
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 # user_list - (Keep as is, but consider @permission_classes([IsAuthenticated]) for security)
 @api_view(['GET'])
 # @permission_classes([IsAuthenticated]) # Allow only authenticated users to view the user list
@@ -90,6 +97,7 @@ def user_list(request):
         import traceback
         traceback.print_exc()
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # sync_ttt_history_api - AUTH BYPASS ENABLED HERE
 @api_view(['POST'])
@@ -139,6 +147,7 @@ def sync_ttt_history_api(request):
         import traceback
         traceback.print_exc()
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 def user_template_view(request):
     return HttpResponse("This is the user template view. Render an HTML template here.")
